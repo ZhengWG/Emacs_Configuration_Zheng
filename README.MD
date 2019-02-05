@@ -11,7 +11,7 @@
 
 **init-keybindings.el**:快捷键设置;
 
-*init-org.el**:Org-mode设置;
+**init-org.el**:Org-mode设置;
 
 **init-packages.el**:emacs的安装包列表及配置;
 
