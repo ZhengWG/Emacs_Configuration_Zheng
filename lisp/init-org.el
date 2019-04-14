@@ -1,8 +1,13 @@
 (require 'org)
 (setq org-src-fontify-natively t)
 
-(setq org-agenda-files '("~/org"))
-(global-set-key (kbd "C-c a") 'org-agenda)
+(setq org-agenda-files '("~/.emacs.d/"))
+
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/.emacs.d/gtd.org" "工作安排")
+	 "* TODO [#B] %?\n  %i\n"
+	 :empty-lines 1)))
+
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -24,6 +29,8 @@
 (setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
                               "xelatex -interaction nonstopmode %f"))
 
+;; 自动断行
+(add-hook 'org-mode-hook 'toggle-truncate-lines) 
 ;; export to markdown mode
 (eval-after-load "org"
   '(require 'ox-md nil t))

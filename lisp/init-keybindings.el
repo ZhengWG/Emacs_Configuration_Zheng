@@ -33,4 +33,24 @@
 
 (global-set-key (kbd "M-s e") 'iedit-mode)
 
+(global-set-key (kbd "C-c a") 'org-agenda)
+
+(global-set-key (kbd "C-c r") 'org-capture)
+
+(global-set-key (kbd "C-c p s") 'helm-do-ag-project-root)
+
+;;(global-set-key (kbd "C-w") 'backward-kill-word)
+
+(global-set-key (kbd "C-c C-/") 'comment-or-uncomment-region)
+
+;; org-mode下方便代码编写
+(add-hook 'org-mode-hook '(lambda ()
+                            ;; C-TAB for expanding，补全？
+                            (local-set-key (kbd "C-<tab>")
+                                           'yas/expand-from-trigger-key)
+                            ;; keybinding for inserting code blocks
+                            (local-set-key (kbd "C-c s i")
+                                           'org-insert-src-block)
+                            ))
+
 (provide 'init-keybindings)

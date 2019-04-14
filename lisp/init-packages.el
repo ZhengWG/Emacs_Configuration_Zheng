@@ -1,48 +1,3 @@
-(require 'cl)
-
- (when (>= emacs-major-version 24)
-     (require 'package)
-     (package-initialize)
-     (add-to-list 'package-archives '("melpa" . "http://elpa.emacs-china.org/melpa/") t))
-
-;; config for packages
-;; add whatever packages you want here
-(defvar zheng/packages '(
-		;; --- Auto-completion ---
-		company
-		;; --- Better Editor ---
-		hungry-delete
-		smex
-		swiper
-		counsel
-		smartparens
-		popwin
-		expand-region
-		iedit
-		;; --- Major Mode ---
-		js2-mode
-		js2-refactor
-		web-mode
-		markdown-mode
-		;; --- Minor Mode ---
-		nodejs-repl
-		;; --- Themes ---
-		monokai-theme
-		;; solarized-theme
-		) "Default packages")
-
-(setq package-selected-packages zheng/packages)
-(defun zheng/packages-installed-p ()
-  (loop for pkg in zheng/packages
-	when (not (package-installed-p pkg)) do (return nil)
-	finally (return t)))
-(unless (zheng/packages-installed-p)
-  (message "%s" "Refreshing package database...")
-  (package-refresh-contents)
-  (dolist (pkg zheng/packages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
-
 ;; config for hungry-delete
 (global-hungry-delete-mode)
 ;; config for smartparens
@@ -129,5 +84,25 @@
 (add-hook 'js2-mode-hook
 	      (lambda ()
 		(setq imenu-create-index-function 'js2-imenu-make-index)))
+
+(add-hook 'js2-mode-hook 'flycheck-mode)
+
+(require 'yasnippet)
+(require 'org-pomodoro)
+;;只在编程环境下激活
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
+;;实现了vim的大部分功能
+;;这里只完成了一部分配置，参考day7 emacs21
+;;(evil-mode 1)
+;;使evil的insert state map状态清空，回退到emacs state状态中
+;;(setcdr evil-insert-state-map nil)
+;;(define-key evil-insert-state-map [escape] 'evil-normal-state)
+
+(add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (set (make-local-variable 'company-backends) '((company-anaconda company-dabbrev-code)
+							   company-dabbrev))))
 
 (provide 'init-packages)

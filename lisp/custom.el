@@ -8,7 +8,9 @@
  '(custom-safe-themes
    (quote
     ("bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" default)))
- '(package-selected-packages (quote (company)))
+ '(package-selected-packages
+   (quote
+    (company-anaconda use-package auto-yasnippet counsel evil expand-region flycheck goto-chg helm-ag helm-core hungry-delete iedit js2-refactor markdown-mode monokai-theme multiple-cursors nodejs-repl org-pomodoro pkg-info popup popwin s shut-up smartparens smex swiper undo-tree web-mode yasnippet pallet company)))
  '(popwin:popup-window-position (quote right))
  '(popwin:popup-window-width 90)
  '(tool-bar-mode nil))
