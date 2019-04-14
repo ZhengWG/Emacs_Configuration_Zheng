@@ -19,6 +19,7 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
+;; require加载
 ;;(require 'init-packages)
 ;;(require 'init-ui)
 ;;(require 'init-better-defaults)
