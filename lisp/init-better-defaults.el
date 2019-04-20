@@ -110,8 +110,25 @@
     (previous-line 2)
     (org-edit-src-code)))
 
+;;修改窗口切分功能：光标自动跳转，自动打开：*scratch*缓存
 (defadvice split-window (after move-point-to-new-window activate)
   "Moves the point to the newly created window after splitting."
   (other-window 1))
+
+(defun create-scratch-buffer nil
+   "create a scratch buffer"
+   (interactive)
+   (switch-to-buffer (get-buffer-create "*scratch*"))
+   (lisp-interaction-mode))
+
+(defun split-window-below-new-buffer ()
+  (interactive)
+  (split-window-below)
+  (call-interactively 'create-scratch-buffer))
+
+(defun split-window-right-new-buffer ()
+  (interactive)
+  (split-window-right)
+  (call-interactively 'create-scratch-buffer))
 
 (provide 'init-better-defaults)

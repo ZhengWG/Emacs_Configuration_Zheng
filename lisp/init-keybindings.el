@@ -53,4 +53,8 @@
                                            'org-insert-src-block)
                             ))
 
+;; 将窗口切分默认快捷键链接到自定义函数
+(global-set-key (kbd "C-x 2") 'split-window-below-new-buffer)
+(global-set-key (kbd "C-x 3") 'split-window-below-new-buffer)
+
 (provide 'init-keybindings)
