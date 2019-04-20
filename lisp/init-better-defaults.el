@@ -110,5 +110,8 @@
     (previous-line 2)
     (org-edit-src-code)))
 
+(defadvice split-window (after move-point-to-new-window activate)
+  "Moves the point to the newly created window after splitting."
+  (other-window 1))
 
 (provide 'init-better-defaults)
