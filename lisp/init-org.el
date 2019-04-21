@@ -24,6 +24,8 @@
 (setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
                               "xelatex -interaction nonstopmode %f"))
 
+;; 自动断行
+(add-hook 'org-mode-hook 'toggle-truncate-lines)
 ;; export to markdown mode
 (eval-after-load "org"
   '(require 'ox-md nil t))
