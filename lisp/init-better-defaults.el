@@ -107,6 +107,6 @@
 
 (defun split-window-right-new-buffer ()
   (interactive)
-  (split-window-right)
+  (split-window-right))
 
 (provide 'init-better-defaults)
