@@ -8,13 +8,20 @@
 	 "* TODO [#B] %?\n  %i\n"
 	 :empty-lines 1)))
 
+;; version26去除ob-sh采用了ob-shell
+(if (>= emacs-major-version 26)
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((shell . t)))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((sh . t))))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((R . t)
    (emacs-lisp . t)
    (python . t)
-   (sh . t)
    (haskell . t)
    (js . t)
    (latex . t)
