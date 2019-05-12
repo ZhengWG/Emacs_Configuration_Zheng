@@ -8,5 +8,5 @@
 ```
 curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
 ```
-然后在`.emacs.d`目录下执行：`cask install`进行`Cask`文件中的packages包的安装，
+然后在`.emacs.d`目录下执行：`cask install`进行`Cask`文件中的packages包的安装，耐心等待！
 最后打开`emacs`即可。
